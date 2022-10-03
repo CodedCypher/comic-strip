@@ -89,6 +89,7 @@ export default function HeaderResponsive() {
 	const links = [
 		{ link: "/", label: "Home" },
 		{ link: "/comic", label: "Comic" },
+		{ link: "/poem", label: "Poems" },
 	];
 	const [opened, { toggle, close }] = useDisclosure(false);
 	const [active, setActive] = useState(links[0].link);

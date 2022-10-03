@@ -47,19 +47,18 @@ const Details = () => {
 					<Accordion.Item className={classes.item} value="Literary genre and literary themes">
 						<Accordion.Control>Literary genre and literary themes</Accordion.Control>
 						<Accordion.Panel>
-							The literary genre used in the text is science fiction. The literary approaches that
-							are found in the text are identity, history and memory, technology, and
-							intertextuality: Identity shows the social status between the wealthy and the poor,
-							creating a terrible cycle of poverty and class injustice. History & Memory in cause
-							and effect; the oppressive government is permitted to rule unchecked over the
-							uneducated masses, which resulted in rebellion to fight for freedom, equality, and
-							justice. History & Memory depiction; Scy doesn’t know he is living in a virtual world
-							and not in reality. History & Memory beginning; the comic is a sequel to the virtual
-							center which is dependent on the author's life when she experiences marital law.
-							Technology; set in a futuristic dystopian Philippine setting where everyone can live
-							in a virtual world. Lastly, intertextuality textual relationship; this comic is a
-							sequel to the virtual center, textual relationship; our comic has a lot of
-							similarities to other works.
+							The literary genre used in the text is science fiction. The literary themes that are
+							found in the text are identity, history and memory, technology, and intertextuality:
+							Identity shows the social status between the wealthy and the poor, creating a terrible
+							cycle of poverty and class injustice. History & Memory in cause and effect; the
+							oppressive government is permitted to rule unchecked over the uneducated masses, which
+							resulted in rebellion to fight for freedom, equality, and justice. History & Memory
+							depiction; Scy doesn’t know he is living in a virtual world and not in reality.
+							History & Memory beginning; the comic is a sequel to the virtual center which is
+							dependent on the author's life when she experiences marital law. Technology; set in a
+							futuristic dystopian Philippine setting where everyone can live in a virtual world.
+							Lastly, intertextuality textual relationship; this comic is a sequel to the virtual
+							center, textual relationship; our comic has a lot of similarities to other works.
 						</Accordion.Panel>
 					</Accordion.Item>
 				</motion.div>

@@ -17,8 +17,13 @@ import Details from "../components/Details";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useScrollLock, useViewportSize } from "@mantine/hooks";
+import { useEffect } from "react";
 
 const Home: NextPage = () => {
+	const [_, setScrollLocked] = useScrollLock();
+	const { width } = useViewportSize();
+	const isMobile = width < 768;
 	const genre = ["science fiction", "Mystery", "tragedy"];
 	const avatars = [
 		{ src: "carlo.jpg", name: "Carlo Meneses", link: "https://www.facebook.com/HindiAkoSiCarlo" },
@@ -27,13 +32,25 @@ const Home: NextPage = () => {
 	];
 	const detailsRef = useRef(null);
 
+	useEffect(() => {
+		if (!isMobile) {
+			setScrollLocked((c) => !c);
+			setTimeout(() => {
+				setScrollLocked((c) => !c);
+			}, 3000);
+		}
+	}, []);
+
 	return (
 		<>
 			<Container>
 				<Stack spacing="10vh">
 					<motion.div
-						initial={{ x: 300, opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
+						animate={{
+							y: 0,
+							opacity: 1,
+						}}
+						initial={{ y: -300, opacity: 0 }}
 						transition={{ duration: 1 }}
 					>
 						<Carousel
@@ -64,15 +81,15 @@ const Home: NextPage = () => {
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ duration: 1, delay: 1.5 }}
 					>
-						<Grid grow sx={{ alignItems: "center" }}>
-							<Grid.Col span={4}>
+						<Grid columns={12} grow sx={{ alignItems: "center" }}>
+							<Grid.Col md={6} sm={6} xs={12}>
 								<Stack>
 									<Title order={1} size="h3">
 										One Man’s Utopia is Another Man’s Dystopia
 									</Title>
 									<Group>
 										{genre.map((g, i) => (
-											<Badge variant="solid" key={i}>
+											<Badge variant="filled" key={i}>
 												{g}
 											</Badge>
 										))}
@@ -109,7 +126,7 @@ const Home: NextPage = () => {
 									</Stack>
 								</Stack>
 							</Grid.Col>
-							<Grid.Col span={3}>
+							<Grid.Col md={6} sm={6} xs={12}>
 								<Link href="/comic">
 									<motion.div
 										whileHover={{
@@ -117,7 +134,7 @@ const Home: NextPage = () => {
 											transition: { duration: 0.3 },
 										}}
 									>
-										<Image src={"coverpage.png"} />
+										<Image src={"coverpage.png"} sx={{ cursor: "pointer" }} />
 									</motion.div>
 								</Link>
 							</Grid.Col>
@@ -132,12 +149,12 @@ const Home: NextPage = () => {
 						>
 							<Title mb="md">Creators</Title>
 						</motion.div>
-						<Group position="apart" sx={{ width: "100%" }}>
+						<Group position="apart" sx={{ width: "100%", justifyContent: "center" }}>
 							{avatars.map(({ src, name, link }, i) => (
 								<motion.div
 									initial={{ y: 200, opacity: 0 }}
 									whileInView={{ y: 0, opacity: 1 }}
-									viewport={{ once: true, amount: "some" }}
+									viewport={{ once: true }}
 									transition={{ duration: 0.7, delay: (i + 1) * 0.3 }}
 									key={i}
 								>

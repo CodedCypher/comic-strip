@@ -10,6 +10,7 @@ import {
 	useMantineColorScheme,
 	ActionIcon,
 	Title,
+	MediaQuery,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
@@ -120,14 +121,16 @@ export default function HeaderResponsive() {
 					Comic Strip
 				</Title>
 				<Group>
-					<ActionIcon onClick={() => toggleColorScheme()}>
-						{colorScheme === "dark" ? <BsFillMoonFill /> : <BsFillSunFill />}
-					</ActionIcon>
-					<Group spacing={5} className={classes.links}>
-						{items}
+					<Group>
+						<ActionIcon onClick={() => toggleColorScheme()}>
+							{colorScheme === "dark" ? <BsFillMoonFill /> : <BsFillSunFill />}
+						</ActionIcon>
+						<Group spacing={5} className={classes.links}>
+							{items}
+						</Group>
 					</Group>
+					<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
 				</Group>
-				<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
 
 				<Transition transition="pop-top-right" duration={200} mounted={opened}>
 					{(styles) => (

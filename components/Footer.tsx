@@ -1,9 +1,9 @@
-import { Container, Text, Center } from "@mantine/core";
+import { Container, Text, Center, Box } from "@mantine/core";
 import React from "react";
 
 const Footer = () => {
 	return (
-		<Container
+		<Box
 			my="lg"
 			sx={(theme) => ({
 				borderTop: `1px solid ${
@@ -11,12 +11,14 @@ const Footer = () => {
 				}`,
 			})}
 		>
-			<Center mt="md">
-				<Text color="dimmed">
-					©{new Date().getFullYear()} Jim Danielle Encarnacion. All rights reserved.
-				</Text>
-			</Center>
-		</Container>
+			<Container>
+				<Center mt="md">
+					<Text color="dimmed">
+						©{new Date().getFullYear()} Jim Danielle Encarnacion. All rights reserved.
+					</Text>
+				</Center>
+			</Container>
+		</Box>
 	);
 };
 

@@ -100,10 +100,7 @@ const Details = () => {
 							class injustice. Historical approach; the comic is a sequel to the virtual center
 							where we used a fight between the rebels and the government to portray the martial
 							law: the injustice and inequality in society where the rich and the government are
-							oppressing the poor. Lastly, the biographical approach is appropriate since the author
-							experienced martial law first hand; it's the author's past that had a substantial
-							influence on the literary work, and the characters of the story portray her struggles
-							in life during that time.
+							oppressing the poor.
 						</Accordion.Panel>
 					</Accordion.Item>
 				</motion.div>

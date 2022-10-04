@@ -19,10 +19,10 @@ const Layout = ({ children }) => {
 			<Box my="10vh" />
 			{children}
 			<motion.div
-				initial={{ y: 200, opacity: 0 }}
-				whileInView={{ y: 0, opacity: 1 }}
+				initial={{ opacity: 0 }}
+				whileInView={{ opacity: 1 }}
 				viewport={{ once: true }}
-				transition={{ duration: 0.7 }}
+				transition={{ duration: 0.7, delay: 2 }}
 			>
 				<Footer />
 			</motion.div>

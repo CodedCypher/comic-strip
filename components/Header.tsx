@@ -117,13 +117,23 @@ export default function HeaderResponsive() {
 	return (
 		<Header height={HEADER_HEIGHT} mb={20} className={classes.root}>
 			<Container className={classes.header}>
-				<Title order={4} sx={{ cursor: "pointer" }} onClick={() => router.push("/")}>
+				<Title
+					order={4}
+					sx={(theme) => ({
+						cursor: "pointer",
+						color: theme.colorScheme === "dark" ? theme.colors.blue[4] : theme.colors.blue[5],
+					})}
+					onClick={() => router.push("/")}
+				>
 					Comic Strip
 				</Title>
 				<Group>
 					<Group>
-						<ActionIcon onClick={() => toggleColorScheme()}>
-							{colorScheme === "dark" ? <BsFillMoonFill /> : <BsFillSunFill />}
+						<ActionIcon
+							onClick={() => toggleColorScheme()}
+							color={colorScheme === "dark" ? "yellow" : "violet"}
+						>
+							{colorScheme === "dark" ? <BsFillSunFill /> : <BsFillMoonFill />}
 						</ActionIcon>
 						<Group spacing={5} className={classes.links}>
 							{items}

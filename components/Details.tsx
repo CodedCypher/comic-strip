@@ -1,6 +1,9 @@
-import { Accordion, createStyles, Title } from "@mantine/core";
+import { Accordion, createStyles, Title, Modal, Button, Center, Text, Group } from "@mantine/core";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Plotline from "./Plotline";
+import Link from "next/link";
+
 const useStyles = createStyles((theme) => ({
 	wrapper: {
 		paddingTop: theme.spacing.xl * 2,
@@ -25,6 +28,7 @@ const useStyles = createStyles((theme) => ({
 const Details = () => {
 	const { classes } = useStyles();
 	const [value, setValue] = useState<string[] | null>(["Literary genre and literary themes"]);
+	const [opened, setOpened] = useState(false);
 	return (
 		<div>
 			<motion.div
@@ -126,6 +130,26 @@ const Details = () => {
 					</Accordion.Item>
 				</motion.div>
 			</Accordion>
+			<Modal opened={opened} onClose={() => setOpened(false)} title="Plot Line" size="xl">
+				<Plotline />
+			</Modal>
+			<motion.div
+				initial={{ y: 200, opacity: 0 }}
+				whileInView={{ y: 0, opacity: 1 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.7 }}
+			>
+				<Center>
+					<Group sx={{ justifyContent: "center" }}>
+						<Link href="/comic">
+							<Button>Read the Comic Strip</Button>
+						</Link>
+						<Button onClick={() => setOpened(true)} variant="outline">
+							Read the Plot Line
+						</Button>
+					</Group>
+				</Center>
+			</motion.div>
 		</div>
 	);
 };

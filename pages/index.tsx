@@ -17,13 +17,11 @@ import Details from "../components/Details";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useScrollLock, useViewportSize } from "@mantine/hooks";
+import { useScrollLock, useWindowScroll } from "@mantine/hooks";
 import { useEffect } from "react";
 
 const Home: NextPage = () => {
 	const [_, setScrollLocked] = useScrollLock();
-	const { width } = useViewportSize();
-	const isMobile = width < 768;
 	const genre = ["science fiction", "Mystery", "tragedy"];
 	const avatars = [
 		{ src: "carlo.jpg", name: "Carlo Meneses", link: "https://www.facebook.com/HindiAkoSiCarlo" },
@@ -33,12 +31,10 @@ const Home: NextPage = () => {
 	const detailsRef = useRef(null);
 
 	useEffect(() => {
-		if (!isMobile) {
-			setScrollLocked((c) => !c);
-			setTimeout(() => {
-				setScrollLocked((c) => !c);
-			}, 3000);
-		}
+		setScrollLocked((c) => true);
+		setTimeout(() => {
+			setScrollLocked((c) => false);
+		}, 3500);
 	}, []);
 
 	return (

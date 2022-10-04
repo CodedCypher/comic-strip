@@ -13,7 +13,7 @@ const Footer = () => {
 		>
 			<Container>
 				<Center mt="md">
-					<Text color="dimmed">
+					<Text color="dimmed" sx={{ textAlign: "center" }}>
 						©{new Date().getFullYear()} Jim Danielle Encarnacion. All rights reserved.
 					</Text>
 				</Center>

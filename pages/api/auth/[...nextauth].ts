@@ -7,14 +7,17 @@ export const authOptions = {
 	adapter: MongoDBAdapter(clientPromise),
 	providers: [
 		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			clientId:
+				process.env.GOOGLE_CLIENT_ID ||
+				"1075962239458-22fgo43lve9suj50mahk4d6tloiol4na.apps.googleusercontent.com",
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET || "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",
 		}),
 	],
 	session: {
 		strategy: "jwt",
 	},
-	secret: process.env.SECRET,
+	secret: process.env.SECRE || "B!UjHMyUWD*2w8p!",
+	URL: "https://bigdaddycarlomeneses.vercel.app/",
 };
 
 export default NextAuth(authOptions);

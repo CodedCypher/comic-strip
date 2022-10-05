@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useScrollLock, useWindowScroll } from "@mantine/hooks";
 import { useEffect } from "react";
+import Comments from "../components/Comments";
 
 const Home: NextPage = () => {
 	const [_, setScrollLocked] = useScrollLock();
@@ -176,6 +177,7 @@ const Home: NextPage = () => {
 					<div ref={detailsRef}>
 						<Details />
 					</div>
+					{/* <Comments comments={} /> */}
 				</Stack>
 			</Container>
 		</>

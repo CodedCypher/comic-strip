@@ -14,15 +14,17 @@ import {
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import Details from "../components/Details";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useScrollLock, useWindowScroll } from "@mantine/hooks";
+import { useScrollLock } from "@mantine/hooks";
 import { useEffect } from "react";
 import Comments from "../components/Comments";
+import axios from "axios";
 
 const Home: NextPage = () => {
 	const [_, setScrollLocked] = useScrollLock();
+	const [comments, setComments] = useState([]);
 	const genre = ["science fiction", "Mystery", "tragedy"];
 	const avatars = [
 		{ src: "carlo.jpg", name: "Carlo Meneses", link: "https://www.facebook.com/HindiAkoSiCarlo" },
@@ -37,7 +39,17 @@ const Home: NextPage = () => {
 			setScrollLocked((c) => false);
 		}, 3500);
 	}, []);
-
+	useEffect(() => {
+		const fetchComments = async () => {
+			try {
+				const { data } = await axios.get("https://bigdaddycarlomeneses.vercel.app/api/comment");
+				setComments(data.comments);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchComments();
+	}, []);
 	return (
 		<>
 			<Container>
@@ -177,7 +189,7 @@ const Home: NextPage = () => {
 					<div ref={detailsRef}>
 						<Details />
 					</div>
-					{/* <Comments comments={} /> */}
+					<Comments comments={comments} />
 				</Stack>
 			</Container>
 		</>

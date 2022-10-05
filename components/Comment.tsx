@@ -1,4 +1,7 @@
-import { createStyles, Text, Avatar, Group } from "@mantine/core";
+import { createStyles, Text, Avatar, Group, Paper, ActionIcon } from "@mantine/core";
+import { format } from "timeago.js";
+import { BsFillTrashFill } from "react-icons/bs";
+import { useSession } from "next-auth/react";
 
 const useStyles = createStyles((theme) => ({
 	body: {
@@ -7,32 +10,32 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-interface CommentSimpleProps {
-	postedAt: string;
-	body: string;
-	author: {
-		name: string;
-		image: string;
-	};
-}
-
-function CommentSimple({ postedAt, body, author }: CommentSimpleProps) {
+function CommentSimple({ _id, user, createdAt, comment, deleteComment }) {
+	const { data } = useSession();
 	const { classes } = useStyles();
 	return (
-		<div>
-			<Group>
-				<Avatar src={author.image} alt={author.name} radius="xl" />
-				<div>
-					<Text size="sm">{author.name}</Text>
-					<Text size="xs" color="dimmed">
-						{postedAt}
-					</Text>
-				</div>
+		<Paper withBorder p="md">
+			<Group position="apart">
+				<Group>
+					<Avatar src={user.image} alt={user.name} radius="xl" />
+					<div>
+						<Text size="sm">{user.name}</Text>
+						<Text size="xs" color="dimmed">
+							{format(createdAt)}
+						</Text>
+					</div>
+				</Group>
+				{user.email === data?.user?.email && (
+					<ActionIcon color="red" onClick={() => deleteComment(_id)}>
+						<BsFillTrashFill size={18} />
+					</ActionIcon>
+				)}
 			</Group>
+
 			<Text className={classes.body} size="sm">
-				{body}
+				{comment}
 			</Text>
-		</div>
+		</Paper>
 	);
 }
 

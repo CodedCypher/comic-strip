@@ -189,7 +189,7 @@ const Home: NextPage = () => {
 					<div ref={detailsRef}>
 						<Details />
 					</div>
-					<Comments comments={comments} />
+					{process.env.MONGODB_URI && <Comments comments={comments} />}
 				</Stack>
 			</Container>
 		</>

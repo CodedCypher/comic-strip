@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useScrollLock } from "@mantine/hooks";
 import { useEffect } from "react";
-// import Comments from "../components/Comments";
+import Comments from "../components/Comments";
 import axios from "axios";
 
 const Home: NextPage = () => {
@@ -39,6 +39,7 @@ const Home: NextPage = () => {
 			setScrollLocked((c) => false);
 		}, 3500);
 	}, []);
+
 	useEffect(() => {
 		const fetchComments = async () => {
 			try {
@@ -50,6 +51,7 @@ const Home: NextPage = () => {
 		};
 		fetchComments();
 	}, []);
+
 	return (
 		<>
 			<Container>
@@ -189,7 +191,7 @@ const Home: NextPage = () => {
 					<div ref={detailsRef}>
 						<Details />
 					</div>
-					{/* {process.env.NEXT_PUBLIC_MONGODB_URI && <Comments comments={comments} />} */}
+					{process.env.NEXT_PUBLIC_MONGODB_URI && <Comments comments={comments} />}
 				</Stack>
 			</Container>
 		</>
